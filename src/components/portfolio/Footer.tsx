@@ -45,7 +45,12 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {/* Brand Section */}
             <div className="lg:col-span-1">
-              <h3 className="text-2xl font-bold mb-4">Melak Sisay</h3>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+                  <span className="text-white font-bold text-xl">M</span>
+                </div>
+                <h3 className="text-2xl font-bold">Melak Sisay</h3>
+              </div>
               <p className="text-slate-300 leading-relaxed mb-6">
                 Full Stack Developer specializing in payment systems, microservices architecture, and scalable web applications.
               </p>
