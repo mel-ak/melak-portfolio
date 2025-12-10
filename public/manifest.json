@@ -1,0 +1,21 @@
+{
+  "name": "Melak Sisay - Full Stack Developer Portfolio",
+  "short_name": "Melak Portfolio",
+  "description": "Full Stack Developer specializing in modern web technologies, payment systems, and scalable microservices architecture",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "en-US",
+  "dir": "ltr"
+}
