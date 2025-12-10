@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 export default function Blog() {
     const [selectedTag, setSelectedTag] = useState('all');
@@ -18,6 +19,7 @@ export default function Blog() {
             tags: ['backend', 'microservices'],
             author: 'Melake Sisay',
             image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80',
+            slug: 'building-scalable-microservices-nodejs-nestjs',
         },
         {
             title: 'Payment Gateway Integration: Best Practices',
@@ -28,6 +30,7 @@ export default function Blog() {
             tags: ['payments', 'backend'],
             author: 'Melake Sisay',
             image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80',
+            slug: 'payment-gateway-integration-best-practices',
         },
         {
             title: 'Docker and Kubernetes for Backend Developers',
@@ -38,6 +41,7 @@ export default function Blog() {
             tags: ['devops', 'backend'],
             author: 'Melake Sisay',
             image: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80',
+            slug: 'docker-kubernetes-backend-developers',
         },
         {
             title: 'Building Event-Driven Architectures',
@@ -48,6 +52,7 @@ export default function Blog() {
             tags: ['microservices', 'backend'],
             author: 'Melake Sisay',
             image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+            slug: 'building-event-driven-architectures',
         },
         {
             title: 'Database Design for High Performance',
@@ -58,6 +63,7 @@ export default function Blog() {
             tags: ['backend', 'tutorial'],
             author: 'Melake Sisay',
             image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80',
+            slug: 'database-design-high-performance',
         },
         {
             title: 'Implementing CI/CD Pipelines with GitHub Actions',
@@ -68,6 +74,7 @@ export default function Blog() {
             tags: ['devops', 'tutorial'],
             author: 'Melake Sisay',
             image: 'https://images.unsplash.com/photo-1618401479427-c8ef9465fbe1?w=800&q=80',
+            slug: 'implementing-cicd-pipelines-github-actions',
         },
     ];
 
@@ -145,10 +152,12 @@ export default function Blog() {
                                             <span>{posts[0].readTime}</span>
                                         </div>
                                     </div>
-                                    <Button className="bg-white text-blue-600 hover:bg-blue-50 group">
-                                        Read Article
-                                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                                    </Button>
+                                    <Link to={`/blog/${posts[0].slug}`}>
+                                        <Button className="bg-white text-blue-600 hover:bg-blue-50 group">
+                                            Read Article
+                                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                        </Button>
+                                    </Link>
                                 </div>
                                 <div className="h-full min-h-[400px] relative">
                                     <img
@@ -165,14 +174,14 @@ export default function Blog() {
                 {/* Blog Posts Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredPosts.slice(selectedTag === 'all' ? 1 : 0).map((post, index) => (
-                        <motion.article
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            whileHover={{ y: -8 }}
-                            className="bg-slate-50 dark:bg-slate-900 rounded-2xl overflow-hidden border-2 border-slate-200 dark:border-slate-800 hover:border-blue-600 dark:hover:border-blue-600 transition-all shadow-lg group"
-                        >
+                        <Link key={index} to={`/blog/${post.slug}`} className="block">
+                            <motion.article
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                whileHover={{ y: -8 }}
+                                className="bg-slate-50 dark:bg-slate-900 rounded-2xl overflow-hidden border-2 border-slate-200 dark:border-slate-800 hover:border-blue-600 dark:hover:border-blue-600 transition-all shadow-lg group h-full"
+                            >
                             <div className="relative h-48 overflow-hidden">
                                 <img
                                     src={post.image}
@@ -216,7 +225,8 @@ export default function Blog() {
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-blue-600" />
                                 </div>
                             </div>
-                        </motion.article>
+                            </motion.article>
+                        </Link>
                     ))}
                 </div>
 

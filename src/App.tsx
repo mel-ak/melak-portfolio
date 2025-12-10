@@ -8,6 +8,7 @@ import Experience from './pages/Experience';
 import Projects from './pages/Projects';
 import Services from './pages/Services';
 import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/projects" element={<Layout><Projects /></Layout>} />
           <Route path="/services" element={<Layout><Services /></Layout>} />
           <Route path="/blog" element={<Layout><Blog /></Layout>} />
+          <Route path="/blog/:slug" element={<Layout><BlogPost /></Layout>} />
           <Route path="/contact" element={<Layout><Contact /></Layout>} />
         </Routes>
       </Router>
